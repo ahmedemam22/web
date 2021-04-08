@@ -10,19 +10,19 @@ class RoundedButtonShape extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(top: SizeConfig.screenWidth*s30),
+      padding:  EdgeInsets.only(top: SizeConfig.screenWidth/40),
       child: Container(
-        height: SizeConfig.screenWidth*s40,
-        width:  SizeConfig.screenWidth*s165,
+        height: SizeConfig.screenWidth/12,
+        width:  SizeConfig.screenWidth/3,
         child: RaisedButton(
 
             color: lightYellow,
             child: Text(title,style: TextStyle(
-                fontSize:  SizeConfig.screenWidth*s20,
+                fontSize:  SizeConfig.screenWidth/20,
                 color: Colors.white
             ),),
             onPressed: onpress,
-            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular( SizeConfig.screenWidth*s30))
+            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular( SizeConfig.screenWidth/10))
         ),
       ),
     );

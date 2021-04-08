@@ -13,23 +13,39 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
 
       body:  Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding:  EdgeInsets.only(top:10),
-            child: ListView(
-              children: [
-                Text('Welcome to the Golden Discount',style:TextStyle(
-                  fontSize: SizeConfig.screenWidth*s20,
-                )),
-                SizedBox(height: SizeConfig.screenWidth*s40,),
-                LoginShape(),
-                RoundedButtonShape(title:'Login',onpress: ()=>Navigator.pushReplacementNamed(context, '/scan'),)
+        height: MediaQuery.of(context).size.height,
 
-              ],
+        child: Column(
+          children: [
+            SizedBox(height: SizeConfig.screenWidth/15,),
+            Center(
+              child: Text('Welcome to the Golden Discount',style:TextStyle(
+                fontSize: SizeConfig.screenWidth/20,
+              )),
             ),
-          ),
+            Container(
+              width:SizeConfig.screenWidth/1.5,
+
+              child: Center(
+                  child: Padding(
+                    padding:  EdgeInsets.only(top:10),
+                    child: Center(
+                      child: Column(
+                        children: [
+
+                          SizedBox(height: SizeConfig.screenWidth/20,),
+                          LoginShape(),
+                          RoundedButtonShape(title:'Login',onpress: ()=>Navigator.pushReplacementNamed(context, '/scan'),)
+
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
         ),
+      ),
 
     );
   }

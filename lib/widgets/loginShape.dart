@@ -10,11 +10,11 @@ class LoginShape extends StatelessWidget {
       color: lightYellow,
       child:Column(
         children: [
-          SizedBox(height: SizeConfig.screenWidth*s10,)
+          SizedBox(height: SizeConfig.screenWidth/50,)
           ,
           TextFieldShape(hint: 'Enter Mobile',number: true,),
           TextFieldShape(hint: 'Enter Password'),
-          SizedBox(height: SizeConfig.screenWidth*s10,)
+          SizedBox(height: SizeConfig.screenWidth/50,)
 
         ],
       ),

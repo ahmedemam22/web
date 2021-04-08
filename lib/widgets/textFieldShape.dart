@@ -8,7 +8,7 @@ class TextFieldShape extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.all(SizeConfig.screenWidth*s8),
+      padding:  EdgeInsets.all(SizeConfig.screenWidth/50),
       child: TextField(
         keyboardType: number?TextInputType.number:TextInputType.visiblePassword,
 
