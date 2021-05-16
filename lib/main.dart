@@ -1,37 +1,79 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_wrapper.dart';
-import 'package:responsive_framework/utils/scroll_behavior.dart';
+import 'package:flutter/services.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:web_app/screens/createCustomerScreen.dart';
+import 'package:web_app/screens/createParteners.dart';
 import 'package:web_app/screens/loginScreen.dart';
-import 'package:web_app/utils/colors.dart';
+import 'package:web_app/screens/mainScreen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() => runApp(SignUpApp());
 
-class SignUpApp extends StatelessWidget {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await translator.init(
+    localeDefault: LocalizationDefaultType.device,
+    languagesList: <String>['ar', 'en'],
+    assetsDirectory: 'assets/langs/',
+    apiKeyGoogle: '<Key>', // NOT YET TESTED
+  );
+  runApp(
+    LocalizedApp(
+      child: MyApp(),
+    ),
+  );
+
+
+
+}
+class MyApp extends StatefulWidget {
+  // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: (context, widget) => ResponsiveWrapper.builder(
-          BouncingScrollWrapper.builder(context, widget),
-          maxWidth: 1200,
-          minWidth: 450,
-          defaultScale: true,
-          breakpoints: [
-            ResponsiveBreakpoint.resize(450, name: MOBILE),
-            ResponsiveBreakpoint.autoScale(800, name: TABLET),
-            ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-            ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-            ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    return
+
+      MaterialApp(
+          title: 'web',
+          theme: ThemeData(
+            fontFamily: "GESS",
+
+            primarySwatch: Colors.blue,
+
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          locale: Locale('ar'),
+          supportedLocales: translator.locals(),
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            DefaultCupertinoLocalizations.delegate,
           ],
-          background: Container(color: Color(0xFFF5F5F5))),
-        routes: {
-          '/': (context) => LoginScreen(),
-        },
-      theme: Theme.of(context).copyWith(platform: TargetPlatform.android),
-      debugShowCheckedModeBanner: false,
-    );
+          initialRoute: "/login",
+
+          routes: {
+            '/login': (context) => LoginScreen(),
+            '/main': (context) => MainScreen(),
+            '/parteners': (context) => PartenersScreen(),
+            '/customers': (context) => CreateCustomersScreen(),
+
+          },
+          debugShowCheckedModeBanner: false,
+
+
+
+      );
   }
 }
 
-/* routes: {
-        '/': (context) => LoginScreen(),
-      },*/
+
+

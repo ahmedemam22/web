@@ -12,7 +12,7 @@ class RoundedButtonShape extends StatelessWidget {
     return Padding(
       padding:  EdgeInsets.only(top: SizeConfig.screenWidth/40),
       child: Container(
-        height: SizeConfig.screenWidth/12,
+        height: SizeConfig.screenWidth/15,
         width:  SizeConfig.screenWidth/3,
         child: RaisedButton(
 

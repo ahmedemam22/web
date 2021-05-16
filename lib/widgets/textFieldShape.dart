@@ -8,13 +8,15 @@ class TextFieldShape extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.all(SizeConfig.screenWidth/50),
+      padding:  EdgeInsets.all(SizeConfig.screenWidth/80),
       child: TextField(
         keyboardType: number?TextInputType.number:TextInputType.visiblePassword,
-
         style: TextStyle(color: Colors.red),
         decoration: InputDecoration(fillColor: Colors.white, filled: true,hintText: hint),
       ),
     );
+  }
+  show(){
+
   }
 }

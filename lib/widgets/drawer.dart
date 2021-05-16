@@ -1,40 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:web_app/utils/sizeConfig.dart';
+import 'package:web_app/utils/sizeResponsive.dart';
+import 'package:web_app/utils/colors.dart';
 class MyDrawer extends StatelessWidget {
+  BuildContext _context;
   @override
   Widget build(BuildContext context) {
+    _context=context;
     return Drawer(
 
-
-      // Add a ListView to the drawer. This ensures the user can scroll
-      // through the options in the drawer if there isn't enough vertical
-      // space to fit everything.
       child: ListView(
-        // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
             child: Text('Drawer Header'),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color:lightYellow,
             ),
           ),
-          drawerShape('الشركاء'),
-          drawerShape("العروض"),
-          drawerShape("الدفاتر"),
-          drawerShape("العملاء"),
-          drawerShape("التقارير"),
-          drawerShape("ادارة المستخدمين"),
+          drawerShape('الشركاء','parteners','parteners'),
+          drawerShape("العروض",'offers','parteners'),
+          drawerShape("الدفاتر",'documents','parteners'),
+          drawerShape("العملاء",'customers','customers'),
+          drawerShape("التقارير",'report','parteners'),
+          drawerShape("ادارة المستخدمين",'management','parteners'),
         ],
       ),
     );
   }
-  drawerShape(String title){
-    return ListTile(
-      title: Text(title),
-      onTap: () {
-        // Update the state of the app.
-        // ...
-      },
+  drawerShape(String title,String iconName,String routeName){
+    return Column(
+      children: [
+        SizedBox(height: SizeConfig.screenWidth/25,),
+        InkWell(
+          onTap: (){
+
+          },
+          child: ListTile(
+            title: Text(title,style: TextStyle(
+              fontSize: SizeConfig.screenWidth*s15
+            ),),
+            leading: SvgPicture.asset(
+                'assets/images/$iconName.svg',
+                color: Colors.blue,
+                width: SizeConfig.screenWidth/20,
+                height:  SizeConfig.screenWidth/20,
+              allowDrawingOutsideViewBox: true,
+            ),
+            onTap: (){
+    print('bbbbbbbb');
+    Navigator.pop(_context);
+    Navigator.pushReplacementNamed(_context, '/$routeName');
+              // Update the state of the app.
+              // ...
+            },
+          ),
+        ),
+      ],
     );
   }
 }

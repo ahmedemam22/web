@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:web_app/utils/colors.dart';
 import 'package:web_app/utils/sizeConfig.dart';
 import 'package:web_app/utils/sizeResponsive.dart';
+import 'package:web_app/widgets/customerLoginShape.dart';
+import 'package:web_app/widgets/drawer.dart';
 import 'package:web_app/widgets/loginShape.dart';
+import 'package:web_app/widgets/partenersShape.dart';
 import 'package:web_app/widgets/roundedButtonShape.dart';
-import 'package:web_app/utils/sizeConfig.dart';
-import 'package:web_app/utils/sizeResponsive.dart';
-class LoginScreen extends StatelessWidget {
+class CreateCustomersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SizeConfig.init(context);
     return Scaffold(
-
-      body:  Container(
+      drawer: MyDrawer(),
+      body: Container(
         height: MediaQuery.of(context).size.height,
 
-        child: Column(
+        child: ListView(
           children: [
-            SizedBox(height: SizeConfig.screenWidth/15,),
             Center(
-              child: Text('Welcome to  Keypoun ',style:TextStyle(
+              child: Text('انشاء عميل جديد',style:TextStyle(
                 fontSize: SizeConfig.screenWidth/20,
               )),
             ),
-            Container(
-              width:SizeConfig.screenWidth/1.5,
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal:SizeConfig.screenWidth*s70),
+              child: Container(
+                width:SizeConfig.screenWidth/4,
 
-              child: Center(
+                child: Center(
                   child: Padding(
                     padding:  EdgeInsets.only(top:10),
                     child: Center(
@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                         children: [
 
                           SizedBox(height: SizeConfig.screenWidth/20,),
-                          LoginShape(),
+                          CustomersLoginShape(),
                           RoundedButtonShape(title:'Login',onpress: ()=>Navigator.pushReplacementNamed(context, '/main'),)
 
                         ],
@@ -43,6 +43,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
           ],
         ),
       ),
